@@ -24,7 +24,7 @@ public class CategoryController {
 	@RequestMapping("listCategory")
 	public ModelAndView listCategory(Page page){
 		ModelAndView mav = new ModelAndView();
-		PageHelper.offsetPage(page.getStart(),5);
+		PageHelper.offsetPage(page.getStart(),8);
 		List<Category> cs= categoryService.list();
 		int total = (int) new PageInfo<>(cs).getTotal();
 		

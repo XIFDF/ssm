@@ -5,7 +5,24 @@
 
     <!--插入用户-->
     <insert id="insert" parameterType="User">
-        insert into user (id, name, password, email, sex, tel)
-        values (#{id}, #{name}, #{password}, #{email}, #{sex}, #{tel})
+        insert into user (id, name, email, sex, tel)
+        values (#{id}, #{name}, #{email}, #{sex}, #{tel})
     </insert>
+    <!--按照id查找用户-->
+    <select id="get" parameterType="_int" resultType="User">
+        select * from user where id = #{id}
+    </select>
+    <!--删除用户-->
+    <delete id="delete" parameterType="User">
+        delete from User where id = #{id}
+    </delete>
+    <!--更新用户信息-->
+    <update id="update" parameterType="User">
+        update user set name = #{name}, email = #{email},
+        sex = #{sex}, tel = #{tel} where id=#{id}
+    </update>
+    <!--列出所有用户-->
+    <select id="list" resultType="User">
+        select * from user
+    </select>
 </mapper>
