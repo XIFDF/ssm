@@ -2,6 +2,8 @@ package com.xifdf.test;
 
 import java.util.List;
 
+import com.xifdf.mapper.UserMapper;
+import com.xifdf.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +12,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.xifdf.mapper.CategoryMapper;
-import com.xifdf.pojo.Category;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class MybatisTest {
 
 	@Autowired
-	private CategoryMapper categoryMapper;
+	private UserMapper userMapper;
 
 
 	@Test
 	public void testList() {
 		PageHelper.offsetPage(0, 5);
-		List<Category> cs=categoryMapper.list();
+		List<User> cs=userMapper.list();
 		System.out.println(cs.getClass());
-		for (Category c : cs) {
+		for (User c : cs) {
 			System.out.println(c.getName());
 		}
 		System.out.println(new PageInfo(cs).getTotal());
