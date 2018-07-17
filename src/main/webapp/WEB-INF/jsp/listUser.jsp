@@ -39,6 +39,7 @@
              </tr>
             </c:forEach>
         </table>
+        <button id="addbtn" onclick="addclick()">添加用户</button>
         <div style="text-align:center">
             <a href="?start=0">首  页</a>
             <c:if test="${page.start-page.count >= 0}">
@@ -52,7 +53,6 @@
         </div>
     </div>
     <div id="edit" style="display: none; text-align: center">
-        <h3 id="h3"></h3>
         <form method="post" action="updateuser">
             <input name="id" type="number" id="editid" style="display: none"/>
             用户名<input name="name" type="text" id="editname" placeholder="请输入修改后的用户名"><br>
@@ -60,6 +60,16 @@
             性  别<input name="sex" type="text" id="editsex" placeholder="请输入修改后的性别"><br>
             电  话<input name="tel" type="text" id="edittel" placeholder="请输入修改后的电话"><br>
             <button type="submit">提交</button>
+        </form>
+    </div>
+    <div id="adduser" style="display: none; text-align: center">
+        <form method="post" action="adduser">
+            ID<input name="id" type="number" value= id="addid""/><br>
+            用户名<input name="name" type="text" id="addname" placeholder="添加的用户名" required="required"><br>
+            邮  箱<input name="email" type="text" id="addemail" placeholder="新用户的邮箱" required="required"><br>
+            性  别<input name="sex" type="text" id="addsex" placeholder="新用户的性别" required="required"><br>
+            电  话<input name="tel" type="text" id="addtel" placeholder="新用户的电话" required="required"><br>
+            <button type="submit">添加</button>
         </form>
     </div>
 </body>
@@ -97,5 +107,8 @@
         deleteform.action = "deleteuser";
         deleteform.submit();
     }
-
+    function addclick() {
+        var obj = document.getElementById("adduser");
+        obj.style.display = "";
+    }
 </script>

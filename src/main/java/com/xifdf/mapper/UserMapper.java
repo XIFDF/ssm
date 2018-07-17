@@ -16,4 +16,6 @@ public interface UserMapper {
     int update(User user);
 
     void delete(int id);
+
+    void add(User user);
 }

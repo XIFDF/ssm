@@ -54,4 +54,10 @@ public class UserController {
         ModelAndView mav = new ModelAndView("redirect:/listUser");
         return mav;
     }
+    @RequestMapping("adduser")
+    public ModelAndView adduser(User user){
+        userService.add(user);
+        ModelAndView mav = new ModelAndView("redirect:/listUser");
+        return mav;
+    }
 }

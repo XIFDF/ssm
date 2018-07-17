@@ -4,7 +4,7 @@
 <mapper namespace="com.xifdf.mapper.UserMapper">
 
     <!--插入用户-->
-    <insert id="insert" parameterType="User">
+    <insert id="add" parameterType="User">
         insert into user (id, name, email, sex, tel)
         values (#{id}, #{name}, #{email}, #{sex}, #{tel})
     </insert>
