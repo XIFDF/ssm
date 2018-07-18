@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: 23988
-  Date: 2018/7/10
-  Time: 14:16
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
    pageEncoding="utf-8" import="java.util.*" %>
 
@@ -52,8 +45,16 @@
             <a href="?start=${page.last}">末  页</a>
         </div>
     </div>
+    <div style="text-align: center">
+        <form method="post" action="getuserbyname">
+            <br>按照用户名查询
+            <input name="name" type="text" placeholder="请输入要查询的用户名">
+            <button type="submit">查询</button>
+        </form>
+    </div>
     <div id="edit" style="display: none; text-align: center">
         <form method="post" action="updateuser">
+            <h3 id="h3"></h3>
             <input name="id" type="number" id="editid" style="display: none"/>
             用户名<input name="name" type="text" id="editname" placeholder="请输入修改后的用户名"><br>
             邮  箱<input name="email" type="text" id="editemail" placeholder="请输入修改后的邮箱"><br>

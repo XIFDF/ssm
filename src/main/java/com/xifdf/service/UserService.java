@@ -9,11 +9,13 @@ public interface UserService {
 
     List<User> list();
 
-    boolean insert(User user);
+    boolean add(User user);
 
     void update(User user);
 
     void delete(User user);
 
-    void add(User user);
+    User getUserById(User user);
+
+    List<User> getUserByName(User user);
 }

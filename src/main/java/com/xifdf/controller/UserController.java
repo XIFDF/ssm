@@ -56,8 +56,25 @@ public class UserController {
     }
     @RequestMapping("adduser")
     public ModelAndView adduser(User user){
-        userService.add(user);
-        ModelAndView mav = new ModelAndView("redirect:/listUser");
+        if(userService.add(user)) {
+            ModelAndView mav = new ModelAndView("redirect:/listUser");
+            return mav;
+        }
+        else{
+            ModelAndView mav = new ModelAndView();
+            mav.setViewName("addUserfail");
+            return mav;
+        }
+    }
+    @RequestMapping("getuserbyname")
+    public ModelAndView getuser(Page page, User user){
+        ModelAndView mav = new ModelAndView();
+        PageHelper.offsetPage(page.getStart(), 8);
+        List<User> users = userService.getUserByName(user);
+        int total = (int) new PageInfo<>(users).getTotal();
+        page.caculateLast(total);
+        mav.addObject("users", users);
+        mav.setViewName("listUser");
         return mav;
     }
 }

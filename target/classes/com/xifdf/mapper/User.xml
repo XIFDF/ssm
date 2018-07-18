@@ -4,13 +4,17 @@
 <mapper namespace="com.xifdf.mapper.UserMapper">
 
     <!--插入用户-->
-    <insert id="insert" parameterType="User">
+    <insert id="add" parameterType="User">
         insert into user (id, name, email, sex, tel)
         values (#{id}, #{name}, #{email}, #{sex}, #{tel})
     </insert>
     <!--按照id查找用户-->
-    <select id="get" parameterType="_int" resultType="User">
+    <select id="getUserById" parameterType="_int" resultType="User">
         select * from user where id = #{id}
+    </select>
+    <!--按照用户名查找用户-->
+    <select id="getUserByName" parameterType="java.lang.String" resultType="User">
+        select * from user where name = #{name}
     </select>
     <!--删除用户-->
     <delete id="delete" parameterType="User">

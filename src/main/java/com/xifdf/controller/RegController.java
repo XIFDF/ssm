@@ -2,6 +2,7 @@ package com.xifdf.controller;
 
 import com.xifdf.mapper.UserMapper;
 import com.xifdf.pojo.User;
+import com.xifdf.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class RegController {
-    @Resource private UserMapper userService;
+    @Resource private UserService userService;
 //  注册业务
     @RequestMapping(value = "registerprocess", method = RequestMethod.POST)
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("user") User user){
-        if(userService.insert(user)) {
+        if(userService.add(user)) {
             ModelAndView mav = new ModelAndView("regsuccess");
             return mav;
         }

@@ -17,16 +17,13 @@ public class UserServiceImpl implements UserService {
     public void userlog() {
         System.out.println("denglu");
     }
+
     @Override
-    public boolean insert(User user) {
-        return true;
-    }
-    @Override
-    public List<User> list(){
+    public List<User> list() {
         return userMapper.list();
     }
     @Override
-    public void update(User user){
+    public void update(User user) {
         userMapper.update(user);
     }
     @Override
@@ -34,7 +31,19 @@ public class UserServiceImpl implements UserService {
         userMapper.delete(user.getId());
     }
     @Override
-    public void add(User user) {
-        userMapper.add(user);
+    public boolean add(User user) {
+        if(userMapper.getUserById(user.getId()) == null){
+            userMapper.add(user);
+            return true;
+        }
+        else return false;
+    }
+    @Override
+    public User getUserById(User user) {
+        return userMapper.getUserById(user.getId());
+    }
+    @Override
+    public List<User> getUserByName(User user) {
+        return userMapper.getUserByName(user.getName());
     }
 }

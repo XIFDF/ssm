@@ -9,7 +9,7 @@ public interface UserMapper {
 //    持久层映射接口
 //    @author xifdf
 
-    boolean insert(User user);
+    void add(User user);
 
     List<User> list();
 
@@ -17,5 +17,7 @@ public interface UserMapper {
 
     void delete(int id);
 
-    void add(User user);
+    User getUserById(int id);
+
+    List<User> getUserByName(String name);
 }
