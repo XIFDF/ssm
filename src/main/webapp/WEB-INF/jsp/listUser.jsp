@@ -8,6 +8,7 @@
     <title>用户管理</title>
 </head>
 <body>
+    <h1 style="text-align: center">用户管理系统</h1>
     <div style="width:500px;margin:0px auto;text-align:center">
         <table id="listtable" align="center" border="1" cellpadding="0">
             <tr>
@@ -28,7 +29,7 @@
                  <td>${c.sex}</td>
                  <td>${c.tel}</td>
                  <td><button id="${ct.index}update" onclick="updateclick(this)">编辑</button></td>
-                 <td><button id="${ct.index}delete" onclick="deleteclick(this)">删除</button></td>
+                 <td><button id="${ct.index}delete" onclick="show_confirm(this)">删除</button></td>
              </tr>
             </c:forEach>
         </table>
@@ -65,7 +66,7 @@
     </div>
     <div id="adduser" style="display: none; text-align: center">
         <form method="post" action="adduser">
-            ID<input name="id" type="number" value= id="addid""/><br>
+            <input name="addid" type="number" value=null style="display: none"/><br>
             用户名<input name="name" type="text" id="addname" placeholder="添加的用户名" required="required"><br>
             邮  箱<input name="email" type="text" id="addemail" placeholder="新用户的邮箱" required="required"><br>
             性  别<input name="sex" type="text" id="addsex" placeholder="新用户的性别" required="required"><br>
@@ -112,4 +113,13 @@
         var obj = document.getElementById("adduser");
         obj.style.display = "";
     }
+    function show_confirm(a)
+    {
+        var r=confirm("是否确定删除该用户!");
+        if (r == true)
+        {
+            deleteclick(a);
+        }
+    }
+</script>
 </script>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.xifdf.mapper.UserMapper;
 import com.xifdf.pojo.User;
+import com.xifdf.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +20,12 @@ import com.github.pagehelper.PageInfo;
 public class MybatisTest {
 
 	@Autowired
-	private UserMapper userMapper;
+	private UserService userService;
 
 
 	@Test
-	public void testList() {
-		PageHelper.offsetPage(0, 5);
-		List<User> cs=userMapper.list();
-		System.out.println(cs.getClass());
-		for (User c : cs) {
-			System.out.println(c.getName());
-		}
-		System.out.println(new PageInfo(cs).getTotal());
+	public void testAddTwo(){
+		userService.addTwo();
 	}
 
 }

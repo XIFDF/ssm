@@ -1,6 +1,5 @@
 package com.xifdf.controller;
 
-import com.xifdf.mapper.UserMapper;
 import com.xifdf.pojo.User;
 import com.xifdf.service.UserService;
 import org.springframework.stereotype.Controller;

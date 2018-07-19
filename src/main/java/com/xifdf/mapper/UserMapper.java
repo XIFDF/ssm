@@ -6,9 +6,6 @@ import java.util.List;
 
 public interface UserMapper {
 
-//    持久层映射接口
-//    @author xifdf
-
     void add(User user);
 
     List<User> list();

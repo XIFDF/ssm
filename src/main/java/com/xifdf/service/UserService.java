@@ -18,4 +18,6 @@ public interface UserService {
     User getUserById(User user);
 
     List<User> getUserByName(User user);
+
+    void addTwo();
 }
