@@ -1,13 +1,16 @@
 package com.xifdf.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xifdf.pojo.User;
 import com.xifdf.service.UserService;
 import com.xifdf.util.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -34,7 +37,6 @@ public class UserController {
         mav.setViewName("listUser");
         return mav;
     }
-
     @RequestMapping("updateuser")
     public ModelAndView updateuser(User user, HttpServletRequest request){
         userService.update(user);
@@ -76,5 +78,26 @@ public class UserController {
         mav.addObject("users", users);
         mav.setViewName("listUser");
         return mav;
+    }
+
+//    AXAJ
+    @ResponseBody
+    @RequestMapping("/submitUser")
+    public String submitCategory(@RequestBody User user) {
+        System.out.println("SSM接受到浏览器提交的json，并转换为Category对象:"+user);
+        return "ok";
+    }
+    @ResponseBody
+    @RequestMapping("/getOneUser")
+    public String getOneUser() {
+        User c = new User();
+        c.setId(666);
+        c.setName("用户666");
+        c.setEmail("用户邮箱test");
+        c.setSex("用户性别test");
+        c.setTel("用户电话test");
+        JSONObject json= new JSONObject();
+        json.put("user", JSONObject.toJSON(c));
+        return json.toJSONString();
     }
 }

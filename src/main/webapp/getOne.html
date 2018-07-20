@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用AJAX以JSON方式获取数据</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    </script>
+</head>
+<body>
+<input type="button" value="通过AJAX获取一个用户对象" id="sender">
+
+<div id="messageDiv"></div>
+
+<script>
+    $('#sender').click(function(){
+        var url="getOneUser";
+        $.post(
+            url,
+            function(data) {
+                var json=JSON.parse(data);
+                var name =json.user.name;
+                var id = json.user.id;
+                var email = json.user.email;
+                var sex = json.user.sex;
+                var tel = json.user.tel;
+                $("#messageDiv").html(
+                    "用户id："+ id + "<br>" +
+                    "用户名称:" + name + "<br>" +
+                    "用户邮箱:" + email + "<br>" +
+                    "用户性别:" + sex + "<br>" +
+                    "用户电话:" + tel + "<br>"
+                );
+
+            });
+    });
+</script>
+</body>
+
+</body>
+</html>
