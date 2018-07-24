@@ -17,9 +17,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("")
 public class UserController {
     @Resource private UserService userService;
 
@@ -83,8 +85,8 @@ public class UserController {
 //    AXAJ
     @ResponseBody
     @RequestMapping("/submitUser")
-    public String submitCategory(@RequestBody User user) {
-        System.out.println("SSM接受到浏览器提交的json，并转换为Category对象:"+user);
+    public String submitUser(@RequestBody User user) {
+        System.out.println("SSM接受到浏览器提交的json，并转换为User对象:" + user);
         return "ok";
     }
     @ResponseBody
@@ -100,4 +102,21 @@ public class UserController {
         json.put("user", JSONObject.toJSON(c));
         return json.toJSONString();
     }
+    @ResponseBody
+    @RequestMapping("/getManyUser")
+    public String getManyCategory() {
+        List<User> cs = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            User c = new User();
+            c.setId(i);
+            c.setName("用户名称:"+i);
+            c.setEmail("用户邮箱test"+i);
+            c.setSex("用户性别test"+i);
+            c.setTel("用户电话test"+i);
+            cs.add(c);
+        }
+
+        return JSONObject.toJSON(cs).toString();
+    }
+
 }

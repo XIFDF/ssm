@@ -8,7 +8,7 @@
 </head>
 <body>
     <form>
-        id:<input type="text" id="id" value="testId"/><br>
+        id:<input type="number" id="id"/><br>
         姓名:<input type="text" id="name" value="testName"/><br>
         邮箱:<input type="text" id="email" value="testEmail"/><br>
         性别:<input type="text" id="sex" value="testSex"/><br>
@@ -18,17 +18,17 @@
 
     <script>
         $("#sender").click(function () {
-            var id = document.getElementById('id').value;
+            var id = Number(document.getElementById('id').value);
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var sex = document.getElementById('sex').value;
             var tel = document.getElementById('tel').value;
-            var user = {"name":name, "id":id, "email":email, "sex":sex, "tel":tel};
+            var user = {"id":id, "name":name, "email":email, "sex":sex, "tel":tel};
             var jsonData = JSON.stringify(user);
-            var url="sumbitUser";
+            var url="submitUser";
 
             $.ajax({
-                type : "post",
+                type : "POST",
                 url : url,
                 data : jsonData,
                 dataType : "json",
