@@ -20,7 +20,11 @@ Maven简介：Maven是一个项目管理和综合工具，它能够快速而系�
 在本项目中，Maven的主要的功能是：
 * 创建Web项目目录(由Maven创建能实现项目目录结构的统一性)
 * 管理项目所依赖的jar包<br><br>
-    安装好Maven以及配置完相关环境变量和仓库下载路径后
-    在IDEA File | Settings | Build, Execution, Deployment | Build Tools | Maven 中<br>
-    设置好 Maven home directory 和 User settings file
+        安装好Maven以及配置完相关环境变量和仓库下载路径后
+        在IDEA File | Settings | Build, Execution, Deployment | Build Tools | Maven 中
+        设置好 Maven home directory 和 User settings file
 ## 利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包
+在IDEA的New Project中，选择左侧菜单的Maven。然后选中Create from archetype<br>
+        找到org.apache.maven.archetypes:maven-archetype-webapp
+        然后按照设置提示进行创建，创建结束后在main目录下新建一个名称为java目录，并将此目录设置为源代码目录
+### 目录以及文件简介
