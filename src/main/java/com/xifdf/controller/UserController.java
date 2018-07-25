@@ -104,7 +104,7 @@ public class UserController {
     }
     @ResponseBody
     @RequestMapping("/getManyUser")
-    public String getManyCategory() {
+    public String getManyUser() {
         List<User> cs = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             User c = new User();
