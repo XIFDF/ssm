@@ -34,7 +34,7 @@ static目录：存放CSS和js文件，以及一些图片<br>
 WEB-INF目录：存放HTML页面和jsp页面<br>
 #### pom.xml
 此文件为Maven的配置文件，当我们需要添加jar包或者为项目添加其他因素的时候，就会在此文件进行配置<br>
-添加项目依赖的jar包：在<dependencies></dependencies>中添加<dependency></dependency><br>
+添加项目依赖的jar包：在"<dependencies></dependencies>"中添加"<dependency></dependency>"<br>
 依赖包的相关属性可以通过搜索引擎获取；添加后，它们将会从仓库中自动下载<br>
 #### web.xml
 此文件为web应用配置文件(Web应用发布描述符文件)，作用：<br>
