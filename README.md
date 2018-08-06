@@ -40,3 +40,4 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
 此文件为web应用配置文件(Web应用发布描述符文件)，作用：<br>
 配置Servlet映射，配置过滤器，指向contextConfigLocation配置文件的文件名，配合Spring的初始化<br>
 ## Tomcat在IDEA上的设置
+点击Run-Edit Configurations，点击左侧“+”，选择Tomcat Server - Local。在Tomcat Server -> Unnamed -> Server -> Application server项目下，点击 Configuration ，找到本地 Tomcat 服务器，再点击 OK按钮。
