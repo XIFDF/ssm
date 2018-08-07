@@ -135,3 +135,5 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
 	</bean>
 ```
 注意，在连接池配置中，应该包含了目标数据库的路径和相关配置信息。
+## 持久层mapper，业务层service，控制层controller的编写
+
