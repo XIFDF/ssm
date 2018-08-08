@@ -137,3 +137,41 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
 注意，在连接池配置中，应该包含了目标数据库的路径和相关配置信息。
 ## 持久层mapper，业务层service，控制层controller的编写
 
+## 使用HTML5，JavaScript，CSS编写前端页面，编写jsp页面
+listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <br>
+以编辑功能为例，以下为编辑按钮点击的js函数
+```
+<script type="text/javascript">
+    function updateclick(a){
+        //选中点击的行的元素
+        var table = document.getElementById("listtable");
+        var row = table.getElementsByTagName("tr")[parseInt(a.id) + 1];
+        var col = row.getElementsByTagName("td");
+        //将改行的数据填充到编辑页面中，方便编辑数据
+        document.getElementById("editid").value = col[0].innerHTML;
+        document.getElementById("editname").value = col[1].innerHTML;
+        document.getElementById("editemail").value = col[2].innerHTML;
+        document.getElementById("editsex").value = col[3].innerHTML;
+        document.getElementById("edittel").value = col[4].innerHTML;
+        //提示当前编辑的用户ID，并显示编辑界面
+        var obj = document.getElementById("edit");
+        document.getElementById("h3").innerHTML = "当前更改的用户ID: "+col[0].innerHTML;
+        obj.style.display = "";
+    }
+</script>
+```
+编辑按钮点击后显示的部分，主要为提交数据更新的表单
+```
+<div id="edit" style="display: none; text-align: center">
+    <form method="post" action="updateuser">
+        <h3 id="h3"></h3>
+            <input name="id" type="number" id="editid" style="display: none"/>
+            用户名<input name="name" type="text" id="editname" placeholder="请输入修改后的用户名"><br>
+            邮  箱<input name="email" type="text" id="editemail" placeholder="请输入修改后的邮箱"><br>
+            性  别<input name="sex" type="text" id="editsex" placeholder="请输入修改后的性别"><br>
+            电  话<input name="tel" type="text" id="edittel" placeholder="请输入修改后的电话"><br>
+        <button type="submit">提交</button>
+    </form>
+</div>
+```
+## 运用jQuery-AJAX实现数据的提交和获取(前后端分离)
