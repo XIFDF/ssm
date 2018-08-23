@@ -218,4 +218,15 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
     });
 </script>
 ```
+在controller中处理接受到的数据并显示到控制台上
+```java
+@ResponseBody
+@RequestMapping("/submitUser")
+    public String submitUser(@RequestBody User user) {
+        System.out.println("SSM接受到浏览器提交的json，并转换为User对象:" + user);
+        return "ok";
+    }
+```
+### 获取
+
 	
