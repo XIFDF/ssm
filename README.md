@@ -218,7 +218,7 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
     });
 </script>
 ```
-在controller中处理接受到的数据并显示到控制台上
+在controller中处理接受到的数据并显示到控制台上(UserController.java)
 ```java
 @ResponseBody
 @RequestMapping("/submitUser")
