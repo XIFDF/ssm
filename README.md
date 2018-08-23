@@ -140,7 +140,7 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
 ## 使用HTML5，JavaScript，CSS编写前端页面，编写jsp页面
 listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <br>
 以编辑功能为例，以下为编辑按钮点击的js函数
-```
+```html
 <script type="text/javascript">
     function updateclick(a){
         //选中点击的行的元素
@@ -161,7 +161,7 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
 </script>
 ```
 编辑按钮点击后显示的部分，主要为提交数据更新的表单
-```
+```html
 <div id="edit" style="display: none; text-align: center">
     <form method="post" action="updateuser">
         <h3 id="h3"></h3>
@@ -175,3 +175,58 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
 </div>
 ```
 ## 运用jQuery-AJAX实现数据的提交和获取(前后端分离)
+首先我们需要利用jQuery来提高我们编写AJAX的效率
+```html
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+```
+### 提交
+添加HTML5代码供用户输入
+```html
+<div>
+    id:<input type="number" id="id"/><br>
+    姓名:<input type="text" id="name" value="testName"/><br>
+    邮箱:<input type="text" id="email" value="testEmail"/><br>
+    性别:<input type="text" id="sex" value="testSex"/><br>
+    电话:<input type="text" id="tel" value="testTel"/><br>
+    <input type="button" id="sender" value="提交">
+</div>
+```
+用JavaScript获取用户输入，然后用$.ajax方法实现AJAX提交数据
+```html
+<script>
+    $("#sender").click(function () {
+    //从文本输入框中获取数据并转换为一个 JSON字符串
+        var id = Number(document.getElementById('id').value);
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var sex = document.getElementById('sex').value;
+        var tel = document.getElementById('tel').value;
+        var user = {"id":id, "name":name, "email":email, "sex":sex, "tel":tel};
+        var jsonData = JSON.stringify(user);
+        var url="submitUser";   //此处submitUser字符串对应controller中@RequestMapping("/submitUser")
+    //调用函数
+        $.ajax({
+            type : "POST",
+            url : url,
+            data : jsonData,
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            success: function(result){
+            }
+        });
+        alert("提交成功，请在Tomcat控制台查看服务端接收到的数据");
+    });
+</script>
+```
+在controller中处理接受到的数据并显示到控制台上(UserController.java)
+```java
+@ResponseBody
+@RequestMapping("/submitUser")
+    public String submitUser(@RequestBody User user) {
+        System.out.println("SSM接受到浏览器提交的json，并转换为User对象:" + user);
+        return "ok";
+    }
+```
+### 获取
+
+	
