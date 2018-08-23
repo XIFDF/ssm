@@ -175,3 +175,47 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
 </div>
 ```
 ## 运用jQuery-AJAX实现数据的提交和获取(前后端分离)
+首先我们需要利用jQuery来提高我们编写AJAX的效率
+```
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+```
+### 提交
+添加HTML5代码供用户输入
+```
+<div>
+    id:<input type="number" id="id"/><br>
+    姓名:<input type="text" id="name" value="testName"/><br>
+    邮箱:<input type="text" id="email" value="testEmail"/><br>
+    性别:<input type="text" id="sex" value="testSex"/><br>
+    电话:<input type="text" id="tel" value="testTel"/><br>
+    <input type="button" id="sender" value="提交">
+</div>
+```
+用JavaScript获取用户输入，然后用$.ajax方法实现AJAX提交数据
+```
+<script>
+    $("#sender").click(function () {
+    //从文本输入框中获取数据并转换为一个 JSON字符串
+        var id = Number(document.getElementById('id').value);
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var sex = document.getElementById('sex').value;
+        var tel = document.getElementById('tel').value;
+        var user = {"id":id, "name":name, "email":email, "sex":sex, "tel":tel};
+        var jsonData = JSON.stringify(user);
+        var url="submitUser";   //此处submitUser字符串对应controller中@RequestMapping("/submitUser")
+    //调用函数
+        $.ajax({
+            type : "POST",
+            url : url,
+            data : jsonData,
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            success: function(result){
+            }
+        });
+        alert("提交成功，请在Tomcat控制台查看服务端接收到的数据");
+    });
+</script>
+```
+	
