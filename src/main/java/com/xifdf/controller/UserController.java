@@ -106,7 +106,7 @@ public class UserController {
     @RequestMapping("/getManyUser")
     public String getManyUser() {
         List<User> cs = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 12; i++) {
             User c = new User();
             c.setId(i);
             c.setName("用户名称:"+i);
