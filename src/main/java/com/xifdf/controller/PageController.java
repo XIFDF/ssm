@@ -23,7 +23,7 @@ public class PageController {
 
     @RequestMapping("index")
     public ModelAndView toMainview() throws Exception{
-        ModelAndView mav = new ModelAndView("index");
+        ModelAndView mav = new ModelAndView("spittles");
         return mav;
     }
 }

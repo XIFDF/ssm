@@ -15,7 +15,7 @@ public class LoginController {
     @RequestMapping("/login")
     public ModelAndView login() throws Exception {
         userService.userlog();
-        ModelAndView mav = new ModelAndView("index");
+        ModelAndView mav = new ModelAndView("spittles");
         return mav;
     }
 }
