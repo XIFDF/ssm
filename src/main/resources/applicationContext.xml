@@ -66,7 +66,7 @@
 		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
 	</bean>
 
-	<!--扫描存放SQL语句的User.xml-->
+	<!--扫描存放SQL语句的.xml-->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="typeAliasesPackage" value="com.xifdf.pojo" />
 		<property name="dataSource" ref="dataSource"/>
@@ -88,7 +88,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.xifdf.mapper"/>
 	</bean>
-
+    <!--开启事务-->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />

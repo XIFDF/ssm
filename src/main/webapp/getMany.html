@@ -6,12 +6,16 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 </head>
 <body>
-<input type="button" value="通过AJAX获取多个User对象" id="sender">
-
+<input type="button" value="通过AJAX获取多个User对象" id="getuser">
+<input type="button" value="通过AJAX获取多个category对象" id="getcategory">
+<input type="button" value="通过AJAX获取多个product对象" id="getproduct">
 <div id="messageDiv"></div>
+<div id="categoryDiv"></div>
+<div id="productDiv"></div>
+
 
 <script>
-    $('#sender').click(function(){
+    $('#getuser').click(function(){
         var url="getManyUser";
         $.post(
             url,
@@ -23,9 +27,43 @@
                 for(i in users){
                     var old = $("#messageDiv").html();
                     var user = users[i];
-                    $("#messageDiv").html(old + "<br>"+user.id+"-----"+user.name
+                    $("#messageDiv").html(old
+                        + "<br>"+user.id+"-----"+user.name
                         +"---" + user.email + "---" + user.sex
                         +"---" + user.tel);
+                }
+            });
+    });
+
+    $('#getcategory').click(function () {
+        $.post(
+            "listCategory",
+            function (data) {
+                console.log(data);
+                var categorys = $.parseJSON(data);
+                for(i in categorys){
+                    var old = $("#categoryDiv").html();
+                    var category = categorys[i];
+                    $("#categoryDiv").html(old
+                        + "<br>"+category.id+"-----"+category.name
+                        +"---" + category.email + "---" + category.sex
+                        +"---" + category.tel);
+                }
+            });
+    });
+
+    $('#getproduct').click(function () {
+        $.post(
+            "listProduct",
+            function (data) {
+                console.log(data);
+                var products = $.parseJSON(data);
+                for(i in products){
+                    var old = $("#productDiv").html();
+                    var product = products[i];
+                    $("#productDiv").html(old
+                        + "<br>"+product.id+"-----"+product.name
+                        +"---" + product.price + "---" + product.category);
                 }
             });
     });
