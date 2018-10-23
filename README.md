@@ -228,5 +228,27 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
     }
 ```
 ### 获取
+```html
+<script>
+    $('#getuser').click(function(){
+        var url="getManyUser";
+        $.post(
+            url,
+            function(data) {
+                console.log(data);
+                var users = $.parseJSON(data);
+                console.log(users.length);
 
+                for(i in users){
+                    var old = $("#messageDiv").html();
+                    var user = users[i];
+                    $("#messageDiv").html(old
+                        + "<br>"+user.id+"-----"+user.name
+                        +"---" + user.email + "---" + user.sex
+                        +"---" + user.tel);
+                }
+            });
+    });
+</script>
+```
 	
