@@ -3,9 +3,11 @@ package com.xifdf.test;
 import java.util.List;
 
 import com.xifdf.mapper.CategoryMapper;
+import com.xifdf.mapper.OrderMapper;
 import com.xifdf.mapper.ProductMapper;
 import com.xifdf.mapper.UserMapper;
 import com.xifdf.pojo.Category;
+import com.xifdf.pojo.Order;
 import com.xifdf.pojo.Product;
 import com.xifdf.pojo.User;
 import com.xifdf.service.UserService;
@@ -31,6 +33,7 @@ public class MybatisTest {
 	@Resource private ProductMapper productMapper;
     @Resource private CategoryMapper categoryMapper;
 	@Resource private UserMapper userMapper;
+	@Resource private OrderMapper orderMapper;
 
 	@Test
 	public void testAddTwo(){
@@ -53,5 +56,10 @@ public class MybatisTest {
 	public void getUser(){
 		List<User> users = userMapper.list();
 		System.out.println(users.get(0));
+	}
+	@Test
+	public void listOrder(){
+		List<Order> orders = orderMapper.listOrder();
+		System.out.println(orders);
 	}
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductMapper {
     List<Product> listProduct();
+
+    Product getOrder(int id);
 }
