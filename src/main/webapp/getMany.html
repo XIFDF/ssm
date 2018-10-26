@@ -45,9 +45,14 @@
                     var old = $("#categoryDiv").html();
                     var category = categorys[i];
                     $("#categoryDiv").html(old
-                        + "<br>"+category.id+"-----"+category.name
-                        +"---" + category.email + "---" + category.sex
-                        +"---" + category.tel);
+                    + "<br>"+category.id+"-----"+category.name);
+                    for(j in category.productList) {
+                        var old = $("#categoryDiv").html();
+                        var product = category.productList[j];
+                        $("#categoryDiv").html(old
+                            + "<br>&nbsp;&nbsp;" +
+                            product.id + "---" + product.name + "---" + product.price);
+                    }
                 }
             });
     });
@@ -63,7 +68,7 @@
                     var product = products[i];
                     $("#productDiv").html(old
                         + "<br>"+product.id+"-----"+product.name
-                        +"---" + product.price + "---" + product.category);
+                        +"---" + product.price + "---" + product.category.name);
                 }
             });
     });
