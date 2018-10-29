@@ -60,7 +60,7 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
    <!-- spring mvc的配置文件 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:springMVC.xml</param-value>
+            <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
