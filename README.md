@@ -1,7 +1,7 @@
 # Java Web学习项目(SSM)
 ## 概况：
 以用户管理为基本需求，实现SSM开发框架的各方面内容，包括：
-* Maven在IDEA上的设置
+* [Maven在IDEA上的设置](#Maven在IDEA上的设置)
 * 利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包
 * Tomcat在IDEA上的设置
 * SSM开发框架的基本配置
