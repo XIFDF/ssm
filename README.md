@@ -2,7 +2,7 @@
 ## 概况：
 以用户管理为基本需求，实现SSM开发框架的各方面内容，包括：
 * [Maven在IDEA上的设置](#Maven在IDEA上的设置)
-* [利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包](#利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包)
+* [利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包](#3)
 * [Tomcat在IDEA上的设置](#Tomcat在IDEA上的设置)
 * [SSM开发框架的基本配置](#SSM开发框架的基本配置)
 * [持久层mapper(一对多，多对一，多对多 例子)，业务层service，控制层controller的编写](#持久层mapper，业务层service，控制层controller的编写)
@@ -23,7 +23,7 @@ Maven简介：Maven是一个项目管理和综合工具，它能够快速而系�
 安装好Maven以及配置完相关环境变量和仓库下载路径后<br>
 在IDEA File | Settings | Build, Execution, Deployment | Build Tools | Maven 中<br>
 设置好 Maven home directory 和 User settings file
-## 利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包
+## <h2 id="3">利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包</h2>
 在IDEA的New Project中，选择左侧菜单的Maven。然后选中Create from archetype<br>
 找到org.apache.maven.archetypes:maven-archetype-webapp<br>
 然后按照设置提示进行创建，创建结束后在main目录下新建一个名称为java目录，并将此目录设置为源代码目录<br>
