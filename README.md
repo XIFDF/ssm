@@ -15,7 +15,7 @@
 * MySQL5.7
 ## 基本功能
 在页面上能够对用户的数据进行快速的CRUD
-## <h2 id="1">Maven在IDEA上的设置</h2>
+<h2 id="1">Maven在IDEA上的设置</h2>
 Maven简介：Maven是一个项目管理和综合工具，它能够快速而系统地帮助开发者构建项目。<br>
 在本项目中，Maven的主要的功能是：
 * 创建Web项目目录(由Maven创建能实现项目目录结构的统一性)
@@ -23,7 +23,7 @@ Maven简介：Maven是一个项目管理和综合工具，它能够快速而系�
 安装好Maven以及配置完相关环境变量和仓库下载路径后<br>
 在IDEA File | Settings | Build, Execution, Deployment | Build Tools | Maven 中<br>
 设置好 Maven home directory 和 User settings file
-## <h2 id="3">利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包</h2>
+<h2 id="3">利用Maven管理工具，创建项目的基本目录以及管理所用到的依赖包</h2>
 在IDEA的New Project中，选择左侧菜单的Maven。然后选中Create from archetype<br>
 找到org.apache.maven.archetypes:maven-archetype-webapp<br>
 然后按照设置提示进行创建，创建结束后在main目录下新建一个名称为java目录，并将此目录设置为源代码目录<br>
@@ -39,9 +39,9 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
 #### web.xml
 此文件为web应用配置文件(Web应用发布描述符文件)，作用：<br>
 配置Servlet映射，配置过滤器，指向contextConfigLocation配置文件的文件名，配合Spring的初始化<br>
-## <h2 id="1">Tomcat在IDEA上的设置</h2>
+<h2 id="1">Tomcat在IDEA上的设置</h2>
 点击Run-Edit Configurations，点击左侧“+”，选择Tomcat Server - Local。在Tomcat Server -> Unnamed -> Server -> Application server项目下，点击 Configuration ，找到本地 Tomcat 服务器，再点击 OK按钮。
-## <h2 id="1">SSM开发框架的基本配置</h2>
+<h2 id="1">SSM开发框架的基本配置</h2>
 ### web.xml(部分内容)
 ```xml
   <!-- spring的配置文件-->
@@ -135,10 +135,10 @@ WEB-INF目录：存放HTML页面和jsp页面<br>
 	</bean>
 ```
 注意，在连接池配置中，应该包含了目标数据库的路径和相关配置信息。
-## <h2 id="1">持久层mapper，业务层service，控制层controller的编写</h2>
+<h2 id="1">持久层mapper，业务层service，控制层controller的编写</h2>
 ### 持久层mapper
 
-## <h2 id="1">使用HTML5，JavaScript，CSS编写前端页面，编写jsp页面</h2>
+<h2 id="1">使用HTML5，JavaScript，CSS编写前端页面，编写jsp页面</h2>
 listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <br>
 以编辑功能为例，以下为编辑按钮点击的js函数
 ```html
@@ -175,7 +175,7 @@ listUser.jsp  用户管理页面，包含了对用户的增删改查的功能 <b
     </form>
 </div>
 ```
-## <h2 id="1">运用jQuery-AJAX实现数据的提交和获取(前后端分离)
+<h2 id="1">运用jQuery-AJAX实现数据的提交和获取(前后端分离)
 首先我们需要利用jQuery来提高我们编写AJAX的效率
 ```html
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
