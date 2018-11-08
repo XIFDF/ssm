@@ -62,4 +62,8 @@ public class MybatisTest {
 		List<Order> orders = orderMapper.listOrder();
 		System.out.println(orders);
 	}
+	@Test
+	public void testtransaction() {
+		userService.addTwo();
+	}
 }

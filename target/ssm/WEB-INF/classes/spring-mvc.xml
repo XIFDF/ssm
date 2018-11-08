@@ -12,9 +12,8 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 
-
+    <!--扫描Controller,并将其生命周期纳入Spring管理-->
     <context:annotation-config/>
-
     <context:component-scan base-package="com.xifdf.controller">
           <context:include-filter type="annotation" 
           expression="org.springframework.stereotype.Controller"/>

@@ -9,6 +9,9 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
+	<!--是应用上下文、全局的配置。其启动配置一般在web.xml的Listener节点中， 注意Listener和servlet的区别，-->
+	<!--加载优先级是Listener大于servlet，同时两者性质也不同，Listener的操作是对一个事件对象的监听，-->
+	<!--而servlet和filter比较类似，是对于URL的一种匹配拦截。-->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
