@@ -230,6 +230,12 @@
       </plugins>
     </pluginManagement>
 
+  <!--资源文件是Java代码中要使用的文件。代码在执行的时候会到指定位置去查找这些文件。前面已经说了Maven默认的处理方式，但是有时候我们需要进行自定义的配置。-->
+  <!--有时候有些配置文件通常与.java文件一起放在src/main/java目录（如mybatis或hibernate的表映射文件）。有的时候还希望把其他目录中的资源也复制到classes目录中。这些情况下就需要在Pom.xml文件中修改配置了。-->
+  <!--可以有两种方法：-->
+
+  <!--一是在<build>元素下添加<resources>进行配置。-->
+  <!--另一种是在<build>的<plugins>子元素中配置maven-resources-plugin等处理资源文件的插件。-->
     <resources>
       <resource>
         <directory>src/main/resources</directory>
