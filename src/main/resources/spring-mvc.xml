@@ -27,15 +27,35 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    
+    <!--静态资源直接全部放行-->
     <mvc:default-servlet-handler />
 
-
+    <!--多视图解析器-->
+    <!--jsp-->
     <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass"
             value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
+        <property name="order" value="2" />
     </bean>
+
+    <!--html-->
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/html/"/>
+    </bean>
+
+    <bean id="freemarkerConfiguration"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    </bean>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true"/>
+        <property name="suffix" value=".html"/>
+        <property name="order" value="1"/>
+    </bean>
+    <!--***-->
 </beans>

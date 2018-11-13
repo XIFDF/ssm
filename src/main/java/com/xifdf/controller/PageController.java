@@ -3,6 +3,7 @@ package com.xifdf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 //用于页面之间的跳转
@@ -25,5 +26,10 @@ public class PageController {
     public ModelAndView toMainview() throws Exception{
         ModelAndView mav = new ModelAndView("testpage");
         return mav;
+    }
+
+    @RequestMapping(value = "spittle", method = RequestMethod.GET)
+    public String toSpittle() {
+        return "spittle";
     }
 }
