@@ -1,5 +1,7 @@
 package com.xifdf.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xifdf.mapper.UserMapper;
 import com.xifdf.pojo.User;
 import com.xifdf.service.UserService;
@@ -24,6 +26,15 @@ public class UserServiceImpl implements UserService {
     public List<User> list() {
         return userMapper.list();
     }
+
+    @Override
+    public PageInfo<User> getUsers(int currentPage) {
+        PageHelper.startPage(currentPage, 8);
+        List<User> users = userMapper.list();
+        PageInfo<User> userPageInfo = new PageInfo<>(users);
+        return userPageInfo;
+    }
+
     @Override
     public void update(User user) {
         userMapper.update(user);
@@ -67,4 +78,6 @@ public class UserServiceImpl implements UserService {
         c2.setTel("test");
         userMapper.add(c2);
     }
+
+
 }

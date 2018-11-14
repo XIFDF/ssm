@@ -20,7 +20,7 @@
 <body>
 <h1 style="text-align: center">用户管理系统</h1>
 <div>
-    <table id="table" class="table">
+    <table id="table" class="table table-hover">
         <thead>
         <tr>
             <th>用户ID</th>
@@ -46,7 +46,7 @@
 <script>
     $(function () {
         $.post(
-            "spittle/listUser",
+            "spittle/listUser?currentPage=1",
             function (data) {
                 console.log(data);
                 showData(data);

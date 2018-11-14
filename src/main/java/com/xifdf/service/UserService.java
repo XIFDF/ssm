@@ -1,5 +1,6 @@
 package com.xifdf.service;
 
+import com.github.pagehelper.PageInfo;
 import com.xifdf.pojo.User;
 
 import java.util.List;
@@ -8,6 +9,8 @@ public interface UserService {
     void userlog();
 
     List<User> list();
+    //ajax分页
+    PageInfo<User> getUsers(int currentPage);
 
     boolean add(User user);
 
