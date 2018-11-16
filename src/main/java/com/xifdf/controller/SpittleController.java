@@ -20,11 +20,11 @@ public class SpittleController {
 
     @ResponseBody
     @RequestMapping("/listUser")
-    public String listUser(@RequestParam("currentPage") int currentPage) throws Exception{
-        PageInfo<User> userPageInfo =userService.getUsers(currentPage);
+    public String listUser(@RequestParam("pageNum") int pageNum) throws Exception{
+        PageInfo<User> userPageInfo =userService.getUsers(pageNum);
         //这里使用了jackson来序列化对象，user那边使用的阿里的fastjson
         ObjectMapper objectMapper = new ObjectMapper();
-        String jsonStr = objectMapper.writeValueAsString(userPageInfo);
-        return jsonStr;
+        return objectMapper.writeValueAsString(userPageInfo);
+
     }
 }

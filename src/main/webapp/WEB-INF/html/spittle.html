@@ -19,8 +19,8 @@
 </head>
 <body>
 <h1 style="text-align: center">用户管理系统</h1>
-<div>
-    <table id="table" class="table table-hover">
+<div class="container">
+    <table id="table" class="table table-hover table-bordered table-striped">
         <thead>
         <tr>
             <th>用户ID</th>
@@ -32,10 +32,18 @@
             <th>删除</th>
         </tr>
         </thead>
-
         <tbody>
         </tbody>
     </table>
+</div>
+
+<div class="container">
+    <ul class="pagination">
+        <li><a href="javascript:getPage(1)">首页</a></li>
+        <li><a id="pre" href="javascript:getPrePage()" data-toggle="tooltip" title="没有上一页了">上一页</a></li>
+        <li><a id="next" href="javascript:getNextPage()" data-toggle="tooltip" title="没有下一页了">下一页</a></li>
+        <li><a href="javascript:getLastPage()">尾页</a></li>
+    </ul>
 </div>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
@@ -46,17 +54,19 @@
 <script>
     $(function () {
         $.post(
-            "spittle/listUser?currentPage=1",
+            "spittle/listUser?pageNum=1",
             function (data) {
                 console.log(data);
-                showData(data);
+                var pageInfo = $.parseJSON(data);
+                showData(pageInfo);
+                sessionStorage.setItem("pageInfo", data);
             }
         );
     });
-    function showData(data) {
-        var users = $.parseJSON(data);
-        for (i in users) {
-            var user = users[i];
+    function showData(pageInfo) {
+        $("#table tbody").empty();
+        for (i in pageInfo.list) {
+            var user = pageInfo.list[i];
             var row = '<tr>'
                 + '<td>'+ user.id +'</td>'
                 + '<td>'+ user.name +'</td>'
@@ -68,6 +78,37 @@
                 + '</tr>';
             $("#table").append(row);
         }
+    }
+    function getPrePage() {
+        var pageInfo = $.parseJSON(sessionStorage.getItem("pageInfo"));
+        getPage(pageInfo.pageNum - 1);
+    }
+    function getNextPage() {
+        var pageInfo = $.parseJSON(sessionStorage.getItem("pageInfo"));
+        getPage(pageInfo.pageNum + 1);
+    }
+    function getLastPage() {
+        var pageInfo = $.parseJSON(sessionStorage.getItem("pageInfo"));
+        getPage(pageInfo.lastPage);
+    }
+    function getPage(pageNum) {
+        var pageInfo = $.parseJSON(sessionStorage.getItem("pageInfo"));
+        if(pageNum < 1) ;
+        else if(pageNum > pageInfo.lastPage) ;
+        else {
+            getdata(pageNum);
+            showData($.parseJSON(sessionStorage.getItem("pageInfo")));
+        }
+    }
+    function getdata(pageNum) {
+        $.ajax({
+            type : "POST",
+            url : "spittle/listUser?pageNum=" + pageNum,
+            async : false,
+            success:function (data) {
+                sessionStorage.setItem("pageInfo", data);
+            }
+        });
     }
 </script>
 </body>

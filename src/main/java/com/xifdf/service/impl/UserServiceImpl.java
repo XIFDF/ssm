@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageInfo<User> getUsers(int currentPage) {
-        PageHelper.startPage(currentPage, 8);
+    public PageInfo<User> getUsers(int pageNum) {
+        PageHelper.startPage(pageNum, 8);
         List<User> users = userMapper.list();
         PageInfo<User> userPageInfo = new PageInfo<>(users);
         return userPageInfo;

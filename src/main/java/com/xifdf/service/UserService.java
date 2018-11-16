@@ -10,7 +10,7 @@ public interface UserService {
 
     List<User> list();
     //ajax分页
-    PageInfo<User> getUsers(int currentPage);
+    PageInfo<User> getUsers(int pageNum);
 
     boolean add(User user);
 
