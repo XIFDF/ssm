@@ -41,7 +41,56 @@
         <li><a href="javascript:getLastPage()">尾页</a></li>
     </ul>
 </div>
-
+<button class="btn btn-info btn-lg center-block" data-toggle="modal" data-target="#addModal">添加用户</button>
+<div class="col-md-offset-2">
+<div class="col-lg-3">
+    <h4 class="text-center">按照用户名查询</h4>
+    <input class="form-control center-block" name="name" type="text" placeholder="请输入要查询的用户名">
+    <br><button class="btn btn-default center-block">查询</button>
+</div>
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editModelTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="editModelTitle"></h3>
+            </div>
+            <div class="modal-body">
+                <input name="id" type="number" id="editid" style="display: none"/>
+                <span class="input-group-addon">用户名</span><input name="name" class="form-control" type="text" id="editname" placeholder="请输入修改后的用户名"><br>
+                <span class="input-group-addon">邮  箱</span><input name="email" class="form-control" type="text" id="editemail" placeholder="请输入修改后的邮箱"><br>
+                <span class="input-group-addon">性  别</span><input name="sex" class="form-control" type="text" id="editsex" placeholder="请输入修改后的性别"><br>
+                <span class="input-group-addon">电  话</span><input name="tel" class="form-control" type="text" id="edittel" placeholder="请输入修改后的电话"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addModalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="addModalTitle">新用户的信息</h3>
+            </div>
+            <div class="modal-body">
+                <input name="addid" class="form-control" type="number" value=null style="display: none"/><br>
+                <span class="input-group-addon">用户名</span><input name="name" class="form-control" type="text" id="addname" placeholder="添加的用户名" required="required"><br>
+                <span class="input-group-addon">邮  箱</span><input name="email" class="form-control" type="text" id="addemail" placeholder="新用户的邮箱" required="required"><br>
+                <span class="input-group-addon">性  别</span><input name="sex" class="form-control" type="text" id="addsex" placeholder="新用户的性别" required="required"><br>
+                <span class="input-group-addon">电  话</span><input name="tel" class="form-control" type="text" id="addtel" placeholder="新用户的电话" required="required"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">添加用户</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</div>
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
@@ -62,6 +111,7 @@
     function showData(pageInfo) {
         $("#table tbody").empty();
         for (i in pageInfo.list) {
+            var id = i*1+1;
             var user = pageInfo.list[i];
             var row = '<tr>'
                 + '<td>'+ user.id +'</td>'
@@ -69,8 +119,8 @@
                 + '<td>'+ user.email +'</td>'
                 + '<td>'+ user.sex +'</td>'
                 + '<td>'+ user.tel +'</td>'
-                + '<td><button id="update" class="btn btn-default">编辑</button</td>'
-                + '<td><button id="delete" class="btn btn-default">删除</button></td>'
+                + '<td><button id="'+ id +'update" class="btn btn-info center-block" data-toggle="modal" data-target="#editModal" onclick="updateclick(this)">编辑</button</td>'
+                + '<td><button id="'+ id +'delete" class="btn btn-warning center-block" onclick="show_confirm(this)">删除</button></td>'
                 + '</tr>';
             $("#table").append(row);
         }
@@ -105,6 +155,51 @@
                 sessionStorage.setItem("pageInfo", data);
             }
         });
+    }
+
+
+    function updateclick(a){
+        var table = document.getElementById("table");
+        var row = table.getElementsByTagName("tr")[parseInt(a.id)];
+        var col = row.getElementsByTagName("td");
+
+        document.getElementById("editid").value = col[0].innerHTML;
+        document.getElementById("editname").value = col[1].innerHTML;
+        document.getElementById("editemail").value = col[2].innerHTML;
+        document.getElementById("editsex").value = col[3].innerHTML;
+        document.getElementById("edittel").value = col[4].innerHTML;
+
+        var obj = document.getElementById("edit");
+        document.getElementById("editModelTitle").innerHTML = "当前更改的用户ID: "+col[0].innerHTML;
+        obj.style.display = "";
+    }
+    function deleteclick(a) {
+        var table = document.getElementById("table");
+        var row = table.getElementsByTagName("tr")[parseInt(a.id) + 1];
+        var col = row.getElementsByTagName("td");
+
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "id";
+        input.value = col[0].innerHTML;
+        var deleteform = document.createElement("form");
+        document.body.appendChild(deleteform);
+        deleteform.appendChild(input);
+        deleteform.method = "post";
+        deleteform.action = "deleteuser";
+        deleteform.submit();
+    }
+    function addclick() {
+        var obj = document.getElementById("adduser");
+        obj.style.display = "";
+    }
+    function show_confirm(a)
+    {
+        var r=confirm("是否确定删除该用户!");
+        if (r == true)
+        {
+            deleteclick(a);
+        }
     }
 </script>
 </body>
